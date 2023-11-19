@@ -6,12 +6,11 @@
 }
 
 .navbar {
-  background-color: aqua; /* Very light blue background color */
+  background-color: aqua;
   font-family: 'Poppins', sans-serif;
-  font-size: 18px; /* Adjust the font size as needed */
+  font-size: 18px;
 }
 
-/* Add this style to increase the font size of the form group */
 .form-group {
-  font-size: 16px; /* Adjust the font size as needed */
+  font-size: 16px;
 }

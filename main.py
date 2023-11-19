@@ -18,7 +18,7 @@ def process_file(file_path, model_type, language):
     print(f"The language is {language}, model is {model_type}, and filename is {file_path}")
 
     # Load Whisper model
-    model = whisper.get_model(model_type)
+    model = whisper.load_model(model_type)
 
     # Load audio
     audio = whisper.load_audio(file_path)

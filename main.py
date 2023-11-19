@@ -72,5 +72,9 @@ def transcribe():
 
     return render_template("index.html")
 
+@app.route("/features")
+def features():
+    return render_template("features.html")
+
 if __name__ == '__main__':
-   app.run(debug=True)
+    app.run(debug=True)

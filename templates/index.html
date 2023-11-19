@@ -6,27 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Transly</title>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary px-5 ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Transly</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse justify-content-end navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Features</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    {% include 'navbar.html' %}
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -71,7 +57,7 @@
                     <label for="floatingModelSelect">Select Model</label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success" style="background-color: rgb(31, 167, 167)">Transcribe</button>
+            <button type="submit" class="btn btn-success" style="background-color: rgb(31, 167, 167);">Transcribe</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Transcriber - Features</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <div class="container my-4" style="background-color: #f8f9fa;">
+        <h1 class="text-center">Web Transcriber Features</h1>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="feature-box">
+                    <h2>Transcribe audio and video files to text</h2>
+                    <p>The Web Transcriber allows users to upload audio and video files and transcribe them into text using the powerful Whisper ASR model from OpenAI.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="feature-box">
+                    <h2>Choose from different language and model options</h2>
+                    <p>Users can select their preferred language and model options for transcription, providing flexibility based on their specific requirements.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="feature-box">
+                    <h2>User-friendly web interface</h2>
+                    <p>The application offers a user-friendly interface that simplifies the process of uploading files, selecting options, and generating transcriptions. It ensures a seamless and intuitive user experience.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="feature-box">
+                    <h2>GPU Acceleration for Faster Transcription</h2>
+                    <p>The Web Transcriber supports GPU acceleration, utilizing compatible GPUs to enhance the speed of the transcription process. It offers multiple model sizes with varying speed and accuracy tradeoffs, ensuring efficient performance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

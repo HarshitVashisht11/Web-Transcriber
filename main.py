@@ -23,8 +23,8 @@ def process_file(file_path, model_type, language):
     # Load audio
     audio = whisper.load_audio(file_path)
 
-    # Transcribe audio
-    result = model.transcribe(audio)
+    # Transcribe audio with the specified language
+    result = model.transcribe(audio, language=language)
     print(result)
 
     # Save transcript to a text file

@@ -13,19 +13,13 @@
 
 <body>
     {% include 'navbar.html' %}
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success!</strong> {{ messages[0] | safe}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endif %}
-    {% endwith %}
 
-    <p class="text-center fw-bold font-Poppins fs-1 mt-5 mx-5">Generate Transcripts for Video and Audio in seconds.
+    <p class="text-center fw-bold font-Poppins fs-1 mt-5 mx-5">Generate Transcripts for Video and Audio in seconds 🚀
     </p>
+
     <div class="container my-4">
-        <form enctype="multipart/form-data" action="/transcribe" method="post" id="transcriptionForm">
+        <form enctype="multipart/form-data" action="/transcribe" method="post" id="transcriptionForm"
+            onsubmit="showTranscriptionInProgress()">
             <div class="mb-3">
                 <label for="formFile" class="form-label">Select an Audio or Video File</label>
                 <input class="form-control" type="file" name="audioFile" id="formFile" accept="audio/*,video/*" required>
@@ -60,6 +54,26 @@
             <button type="submit" class="btn btn-success" style="background-color: rgb(31, 167, 167);">Transcribe</button>
         </form>
     </div>
+    <script>
+        function showTranscriptionInProgress() {
+            // Check if all input fields are filled
+            var audioFile = document.getElementById('formFile').value;
+            var language = document.getElementById('floatingLanguageSelect').value;
+            var model = document.getElementById('floatingModelSelect').value;
+
+            if (audioFile && language && model) {
+                // Show the alert message below the navbar
+                var alertDiv = document.createElement('div');
+                alertDiv.className = 'alert alert-info alert-dismissible fade show fixed-top mt-5';
+                alertDiv.role = 'alert';
+                alertDiv.innerHTML = '<strong>Transcribing audio. Please wait...</strong>' +
+                                     '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                document.body.appendChild(alertDiv);
+            }
+            // Continue with form submission
+            return true;
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>

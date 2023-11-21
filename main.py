@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, flash, send_file
+from flask import Flask, render_template, request, flash, send_file, redirect, url_for
 import os
 import whisper
 import tempfile
+import time
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'mp4', 'mp3', 'm4a', 'webm', 'mpga', 'mpeg', 'wav'}
@@ -17,26 +18,18 @@ def allowed_file(filename):
 def process_file(file_path, model_type, language):
     print(f"The language is {language}, model is {model_type}, and filename is {file_path}")
 
-    # Load Whisper model
     model = whisper.load_model(model_type)
-
-    # Load audio
     audio = whisper.load_audio(file_path)
-
-    # Transcribe audio with the specified language
     result = model.transcribe(audio, language=language)
     print(result)
 
-    # Save transcript to a text file
     transcript_path = save_transcript(result['text'])
     return transcript_path
 
 def save_transcript(transcript_text):
-    # Create a temporary directory to store transcript files
     temp_dir = tempfile.mkdtemp()
     transcript_path = os.path.join(temp_dir, 'transcript.txt')
 
-    # Write transcript to the file
     with open(transcript_path, 'w', encoding='utf-8') as file:
         file.write(transcript_text)
 
@@ -54,15 +47,21 @@ def transcribe():
         model_type = request.form['model']
 
         if audio_file and allowed_file(audio_file.filename):
-            # Save the uploaded file
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], audio_file.filename)
             audio_file.save(file_path)
 
-            # Process the uploaded file
+            flash('Transcribing audio. Please wait...', 'info')
+
+            # Simulating a delay for demonstration purposes
+            time.sleep(2)
+
             transcript_path = process_file(file_path, model_type, language)
 
-            flash('Transcription successful!', 'success')
-            return send_file(transcript_path, as_attachment=True)
+            # Render the result.html template directly
+            with open(transcript_path, 'r', encoding='utf-8') as file:
+                transcript_text = file.read()
+
+            return render_template("result.html", result={'language': language, 'text': transcript_text, 'transcript_path': transcript_path})
 
         else:
             flash('Invalid file format. Please upload an allowed audio file.', 'danger')
@@ -70,7 +69,17 @@ def transcribe():
         print(str(e))
         flash('Error during transcription. Please try again.', 'danger')
 
-    return render_template("index.html")
+    return redirect(url_for('hello_world'))  # Redirect to the home page if there's an issue
+
+@app.route("/download")
+def download_transcription():
+    transcript_path = request.args.get('transcript_path', default='', type=str)
+
+    if not transcript_path:
+        flash('Error loading transcription result. Please try again.', 'danger')
+        return redirect(url_for('hello_world'))
+
+    return send_file(transcript_path, as_attachment=True)
 
 @app.route("/features")
 def features():

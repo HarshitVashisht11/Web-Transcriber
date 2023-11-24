@@ -8,6 +8,17 @@ Web Transcriber is a web-based application that allows users to transcribe audio
 - Choose from different language and model options.
 - User-friendly web interface.
 
+## DEMO
+
+Producing transcriptions for a segment from the Lex Freedman podcast featuring Elon Musk discussing the electricity crisis: https://www.youtube.com/watch?v=VRJmqJqPH80&t=41s
+
+![Screenshot (201)](https://github.com/HarshitVashisht11/Web-Transcriber/assets/120767685/fb093593-8e54-4dae-a063-edb5cf03fa67)
+
+![Screenshot (202)](https://github.com/HarshitVashisht11/Web-Transcriber/assets/120767685/a4c36971-05ea-4536-9749-a7098ad16328)
+
+![Screenshot (203)](https://github.com/HarshitVashisht11/Web-Transcriber/assets/120767685/dedbd855-7dd0-46a3-9d85-de1a6c20c38d)
+
+
 ## Installation
 
 1. Clone the repository:

@@ -1,6 +1,6 @@
-# Web Transcriber
+# Transly
 
-Web Transcriber is a web-based application that allows users to transcribe audio and video files using OpenAI's Whisper ASR model. The application provides a user-friendly interface for uploading files, selecting language and model options, and generating transcriptions.
+Transly is a web-based application that allows users to transcribe audio and video files using OpenAI's Whisper ASR model. The application provides a user-friendly interface for uploading files, selecting language and model options, and generating transcriptions.
 
 ## Features
 
